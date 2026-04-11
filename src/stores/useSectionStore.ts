@@ -27,4 +27,3 @@ export const useSectionStore = create<SectionStore>((set, get) => ({
     get().elements[id]?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 }))
-

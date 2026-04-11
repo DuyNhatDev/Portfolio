@@ -38,12 +38,12 @@ export default function Header() {
       <div className='relative mx-auto flex h-full w-full max-w-6xl items-center justify-between px-4'>
         <Link href='/' className='group flex items-center gap-3'>
           <Image src='/logo.svg' alt='logo' width={30} height={30} />
-          <span className='font-logo logo-text'>Nguyen Nhat Duy</span>
+          <span className='font-display logo-text'>Nguyen Nhat Duy</span>
         </Link>
 
         <nav className='hidden items-center gap-8 lg:flex'>
           {linkItems.map(({ id, label }) => (
-            <span key={id} className='nav-link font-logo' onClick={() => handleNavClick(id)}>
+            <span key={id} className='nav-link font-display' onClick={() => handleNavClick(id)}>
               {label}
             </span>
           ))}
@@ -62,7 +62,7 @@ export default function Header() {
           <div
             key={id}
             onClick={() => handleNavClick(id)}
-            className='font-logo flex items-center px-5 py-3.5 text-sm tracking-widest text-white/75 transition-colors duration-200 hover:bg-sky-500/5 hover:text-sky-400'
+            className='font-display flex items-center px-5 py-3.5 text-sm tracking-widest text-white/75 transition-colors duration-200 hover:bg-sky-500/5 hover:text-sky-400'
           >
             {label}
           </div>
@@ -71,4 +71,3 @@ export default function Header() {
     </header>
   )
 }
-

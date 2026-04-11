@@ -1,4 +1,3 @@
-
 const ProjectSection = () => {
   return (
     <section id='education' className='h-96 bg-yellow-500'>
