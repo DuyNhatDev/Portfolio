@@ -3,13 +3,13 @@
 import ContactSection from '@/app/components/ContactSection'
 import EducationSection from '@/app/components/EducationSection'
 import ExperienceSection from '@/app/components/ExperienceSection'
-import HomeSection from '@/app/components/HomeSection'
+import HomeSection from '@/app/components/HeroSection'
 import ProjectSection from '@/app/components/ProjectSection'
 import SkillSection from '@/app/components/SkillSection'
 import { useSectionStore, type SectionId } from '@/stores/useSectionStore'
 
 const sectionItems: { id: SectionId; content: React.ReactNode }[] = [
-  { id: 'home', content: <HomeSection /> },
+  { id: 'hero', content: <HomeSection /> },
   { id: 'skill', content: <SkillSection /> },
   { id: 'project', content: <ProjectSection /> },
   { id: 'experience', content: <ExperienceSection /> },
@@ -17,7 +17,7 @@ const sectionItems: { id: SectionId; content: React.ReactNode }[] = [
   { id: 'contact', content: <ContactSection /> }
 ]
 
-export default function Home() {
+export default function Page() {
   const register = useSectionStore((s) => s.register)
 
   return (

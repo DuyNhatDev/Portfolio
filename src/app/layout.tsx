@@ -17,8 +17,8 @@ const orbitron = Orbitron({
 })
 
 export const metadata: Metadata = {
-  title: 'Nguyễn Nhật Duy - Software Developer',
-  description: 'Nguyễn Nhật Duy - Software Developer'
+  title: 'Nguyễn Nhật Duy - Web Developer',
+  description: 'Nguyễn Nhật Duy - Web Developer'
 }
 
 export default function RootLayout({

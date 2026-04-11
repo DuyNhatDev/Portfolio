@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-export type SectionId = 'home' | 'skill' | 'project' | 'experience' | 'education' | 'contact'
+export type SectionId = 'hero' | 'skill' | 'project' | 'experience' | 'education' | 'contact'
 
 type SectionStore = {
   elements: Partial<Record<SectionId, HTMLDivElement>>

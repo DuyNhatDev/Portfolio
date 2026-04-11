@@ -8,7 +8,7 @@ import { useState } from 'react'
 import { useWindowScroll } from 'react-use'
 
 const linkItems: { id: SectionId; label: string }[] = [
-  { id: 'home', label: 'Home' },
+  { id: 'hero', label: 'Home' },
   { id: 'skill', label: 'Skills' },
   { id: 'experience', label: 'Experience' },
   { id: 'project', label: 'Projects' },
