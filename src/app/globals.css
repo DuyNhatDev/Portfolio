@@ -8,14 +8,14 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-logo: var(--font-orbitron);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
 }
 
 /* Scrollbar */
@@ -39,4 +39,59 @@ body {
 * {
   scrollbar-width: thin;
   scrollbar-color: rgb(99 179 237 / 0.3) transparent;
+}
+
+/* ── Header ────────────────────────────────────────────────── */
+
+.logo-text {
+  font-size: 1.4rem; /* text-xl */
+  font-weight: 700; /* font-bold */
+  background: linear-gradient(to right, #38bdf8, #3b82f6); /* sky-400 → blue-500 */
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.nav-link {
+  position: relative;
+  font-size: 0.875rem; /* text-sm */
+  letter-spacing: 0.1em; /* tracking-widest */
+  transition: color 0.2s;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 0;
+  background: #0ea5e9; /* sky-500 */
+  transition: width 0.3s;
+}
+
+.nav-link:hover {
+  color: #0ea5e9;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  padding: 0.875rem 1.25rem; /* py-3.5 px-5 */
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  color: rgb(255 255 255 / 0.75);
+  transition:
+    color 0.2s,
+    background-color 0.2s;
+}
+
+.mobile-nav-link:hover {
+  background-color: rgb(14 165 233 / 0.05); /* sky-500/5 */
+  color: #38bdf8; /* sky-400 */
 }

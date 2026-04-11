@@ -36,20 +36,14 @@ export default function Header() {
       />
 
       <div className='relative mx-auto flex h-full w-full max-w-6xl items-center justify-between px-4'>
-        <Link href='/' className='flex items-center gap-3'>
+        <Link href='/' className='group flex items-center gap-3'>
           <Image src='/logo.svg' alt='logo' width={30} height={30} />
-          <span className='text-lg font-bold text-sky-500'>
-            Nguyen Nhat Duy
-          </span>
+          <span className='font-logo logo-text'>Nguyen Nhat Duy</span>
         </Link>
 
         <nav className='hidden items-center gap-8 lg:flex'>
           {linkItems.map(({ id, label }) => (
-            <span
-              key={id}
-              className='relative text-sm tracking-widest transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-sky-500 after:transition-all after:duration-300 hover:text-sky-500 hover:after:w-full'
-              onClick={() => handleNavClick(id)}
-            >
+            <span key={id} className='nav-link font-logo' onClick={() => handleNavClick(id)}>
               {label}
             </span>
           ))}
@@ -68,7 +62,7 @@ export default function Header() {
           <div
             key={id}
             onClick={() => handleNavClick(id)}
-            className='flex items-center px-5 py-3.5 text-sm tracking-widest text-white/75 transition-colors duration-200 hover:bg-sky-500/5 hover:text-sky-400'
+            className='font-logo flex items-center px-5 py-3.5 text-sm tracking-widest text-white/75 transition-colors duration-200 hover:bg-sky-500/5 hover:text-sky-400'
           >
             {label}
           </div>
