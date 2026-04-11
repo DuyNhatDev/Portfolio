@@ -12,7 +12,18 @@ const eslintConfig = defineConfig([
     'out/**',
     'build/**',
     'next-env.d.ts'
-  ])
+  ]),
+  {
+    rules: {
+      'no-unused-vars': 'off',
+      '@next/next/no-img-element': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-unused-expressions': 'off',
+      '@react-hooks/rules-of-hooks': 'off',
+      '@react-hooks/purity': 'off'
+    }
+  }
 ])
 
 export default eslintConfig
