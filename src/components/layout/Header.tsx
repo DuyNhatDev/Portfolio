@@ -1,26 +1,33 @@
 'use client'
 
 import HamburgerButton from '@/components/ui/HamburgerButton'
+import { useSectionRefs, type SectionId } from '@/context/SectionRefsContext'
 import Link from 'next/link'
 import { useState } from 'react'
 import { useWindowScroll } from 'react-use'
 
-const linkItems = [
-  { href: '#', label: 'Home' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#education', label: 'Education' },
-  { href: '#contact', label: 'Contact' }
+const linkItems: { id: SectionId; label: string }[] = [
+  { id: 'home', label: 'Home' },
+  { id: 'skill', label: 'Skills' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'project', label: 'Projects' },
+  { id: 'education', label: 'Education' },
+  { id: 'contact', label: 'Contact' }
 ]
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const { y } = useWindowScroll()
+  const { scrollTo } = useSectionRefs()
   const scrolled = y > 10
 
+  const handleNavClick = (id: SectionId) => {
+    scrollTo(id)
+    setMenuOpen(false)
+  }
+
   return (
-    <header className='fixed top-0 right-0 left-0 z-50 h-16'>
+    <header className='sticky top-0 z-50 h-16'>
       <div
         className={`absolute inset-0 border-b border-white/10 bg-gray-900/80 backdrop-blur-md transition-opacity duration-500 ${
           scrolled ? 'opacity-100' : 'opacity-0'
@@ -33,14 +40,14 @@ export default function Header() {
         </Link>
 
         <nav className='hidden items-center gap-8 lg:flex'>
-          {linkItems.map(({ href, label }, index) => (
-            <Link
-              key={index}
-              href={href}
+          {linkItems.map(({ id, label }) => (
+            <span
+              key={id}
               className='relative text-sm tracking-widest transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-sky-500 after:transition-all after:duration-300 hover:text-sky-500 hover:after:w-full'
+              onClick={() => handleNavClick(id)}
             >
               {label}
-            </Link>
+            </span>
           ))}
         </nav>
 
@@ -53,15 +60,14 @@ export default function Header() {
           menuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        {linkItems.map(({ href, label }, index) => (
-          <Link
-            key={index}
-            href={href}
-            onClick={() => setMenuOpen(false)}
+        {linkItems.map(({ id, label }) => (
+          <div
+            key={id}
+            onClick={() => handleNavClick(id)}
             className='flex items-center px-5 py-3.5 text-sm tracking-widest text-white/75 transition-colors duration-200 hover:bg-sky-500/5 hover:text-sky-400'
           >
             {label}
-          </Link>
+          </div>
         ))}
       </div>
     </header>

@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import ParticleBackground from '@/components/ParticleBackground'
-import Header from '@/components/Header'
+import Header from '@/components/layout/Header'
+import { SectionRefsProvider } from '@/context/SectionRefsContext'
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
@@ -22,9 +23,11 @@ export default function RootLayout({
   return (
     <html lang='en' className={`${inter.variable} h-full antialiased`} suppressHydrationWarning>
       <body className='flex min-h-full flex-col'>
-        <ParticleBackground />
-        <Header />
-        <main className='flex-1 pt-16'>{children}</main>
+        <SectionRefsProvider>
+          <ParticleBackground />
+          <Header />
+          <main className='flex-1'>{children}</main>
+        </SectionRefsProvider>
       </body>
     </html>
   )
