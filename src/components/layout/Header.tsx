@@ -1,7 +1,8 @@
 'use client'
 
 import HamburgerButton from '@/components/ui/HamburgerButton'
-import { useSectionRefs, type SectionId } from '@/context/SectionRefsContext'
+import { useSectionStore, type SectionId } from '@/stores/useSectionStore'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 import { useWindowScroll } from 'react-use'
@@ -18,7 +19,7 @@ const linkItems: { id: SectionId; label: string }[] = [
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const { y } = useWindowScroll()
-  const { scrollTo } = useSectionRefs()
+  const scrollTo = useSectionStore((s) => s.scrollTo)
   const scrolled = y > 10
 
   const handleNavClick = (id: SectionId) => {
@@ -35,8 +36,11 @@ export default function Header() {
       />
 
       <div className='relative mx-auto flex h-full w-full max-w-6xl items-center justify-between px-4'>
-        <Link href='/' className='text-sm font-medium tracking-widest transition-opacity duration-200 hover:opacity-60'>
-          &lt;NA /&gt;
+        <Link href='/' className='flex items-center gap-3'>
+          <Image src='/logo.svg' alt='logo' width={30} height={30} />
+          <span className='text-lg font-bold text-sky-500'>
+            Nguyen Nhat Duy
+          </span>
         </Link>
 
         <nav className='hidden items-center gap-8 lg:flex'>

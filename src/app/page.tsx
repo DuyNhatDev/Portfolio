@@ -6,7 +6,7 @@ import ExperienceSection from '@/app/components/ExperienceSection'
 import HomeSection from '@/app/components/HomeSection'
 import ProjectSection from '@/app/components/ProjectSection'
 import SkillSection from '@/app/components/SkillSection'
-import { useSectionRefs, type SectionId } from '@/context/SectionRefsContext'
+import { useSectionStore, type SectionId } from '@/stores/useSectionStore'
 
 const sectionItems: { id: SectionId; content: React.ReactNode }[] = [
   { id: 'home', content: <HomeSection /> },
@@ -18,12 +18,16 @@ const sectionItems: { id: SectionId; content: React.ReactNode }[] = [
 ]
 
 export default function Home() {
-  const { refs } = useSectionRefs()
+  const register = useSectionStore((s) => s.register)
 
   return (
     <div className='flex min-h-screen flex-col'>
       {sectionItems.map((section) => (
-        <div key={section.id} ref={refs[section.id]} className='mx-auto w-full max-w-6xl px-6 py-20'>
+        <div
+          key={section.id}
+          ref={(el) => register(section.id, el)}
+          className='mx-auto w-full max-w-6xl scroll-mt-16 px-6 py-20'
+        >
           {section.content}
         </div>
       ))}
