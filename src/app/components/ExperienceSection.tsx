@@ -1,6 +1,6 @@
 const ExperienceSection = () => {
   return (
-    <section id='education' className='h-96 bg-green-500'>
+    <section id='education' className='h-96 bg-green-500/10'>
       Experience
     </section>
   )
